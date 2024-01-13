@@ -10,7 +10,7 @@ const app = express()
 
 //MIDDLEWARE
 app.use(express.json())
-app.use(cookieParser())
+app.use(cookieParser(process.env.JWT_LIFETIME))
 app.get('/', (req, res) => {
   res.send('Hello world')
 })
