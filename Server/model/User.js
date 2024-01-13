@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const bycrpt = require('bcryptjs')
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -20,6 +21,17 @@ const userSchema = new mongoose.Schema({
     required: [true, 'please provide password'],
     minlength: 6,
   },
+
+  role: {
+    type: String,
+    enum: ['admin', 'user'],
+    default: 'user',
+  },
+})
+
+userSchema.pre('save', async function () {
+  const salt = await bycrpt.genSalt(10)
+  this.password = await bycrpt.hash(this.password, salt)
 })
 
 module.exports = mongoose.model('user', userSchema)

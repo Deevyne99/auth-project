@@ -5,12 +5,12 @@ const authRoute = require('./routes/route')
 const connectDB = require('./db/connect')
 const notFound = require('./middleware/notFound')
 const errorHandlerMiddleware = require('./middleware/errorHandler')
-
+const cookieParser = require('cookie-parser')
 const app = express()
 
 //MIDDLEWARE
 app.use(express.json())
-
+app.use(cookieParser())
 app.get('/', (req, res) => {
   res.send('Hello world')
 })
