@@ -34,4 +34,9 @@ userSchema.pre('save', async function () {
   this.password = await bycrpt.hash(this.password, salt)
 })
 
+userSchema.methods.comparePassword = async function (candidatePassword) {
+  const isMatch = await bycrpt.compare(candidatePassword, this.password)
+  return isMatch
+}
+
 module.exports = mongoose.model('user', userSchema)
