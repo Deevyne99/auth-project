@@ -2,6 +2,7 @@ const express = require('express')
 require('dotenv').config()
 require('express-async-errors')
 const authRoute = require('./routes/route')
+const userRoute = require('./routes/userRoute')
 const connectDB = require('./db/connect')
 const notFound = require('./middleware/notFound')
 const errorHandlerMiddleware = require('./middleware/errorHandler')
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
   res.send('Hello world')
 })
 app.use('/api/v1/auth-project', authRoute)
+app.use('/api/v1/auth-project/users', userRoute)
 
 const port = 5000
 
