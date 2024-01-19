@@ -3,7 +3,7 @@ const CustomAPIErrors = require('../errors')
 
 const authenticateUser = (req, res, next) => {
   const token = req.signedCookies.token
-  console.log(token)
+  // console.log(token)
   if (!token) {
     throw new CustomAPIErrors.UnauthenticatedError('Authentication Failed')
   }

@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.pre('save', async function () {
+  if (!this.isModified('password')) return
   const salt = await bycrpt.genSalt(10)
   this.password = await bycrpt.hash(this.password, salt)
 })
