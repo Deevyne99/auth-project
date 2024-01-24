@@ -6,13 +6,15 @@ import RegisterPage from './Pages/Register'
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Navigation />}>
-        <Route index element={<HomePage />} />
-        <Route path='register' element={<RegisterPage />} />
-        <Route path='profile' element={<ProfilePage />} />
-      </Route>
-    </Routes>
+    <section className='bg-sky'>
+      <Routes>
+        <Route path='/' element={<Navigation />}>
+          <Route index element={<HomePage />} />
+          <Route path='register' element={<RegisterPage />} />
+          <Route path='profile' element={<ProfilePage />} />
+        </Route>
+      </Routes>
+    </section>
   )
 }
 
